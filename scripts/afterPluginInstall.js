@@ -1,7 +1,6 @@
 /* global logger */
 
 const path = require('path');
-const common = require('./common');
 
 module.exports = context => new Promise((resolve, reject) => {
     const projectRoot = context.opts.projectRoot;
@@ -9,7 +8,6 @@ module.exports = context => new Promise((resolve, reject) => {
     const src = path.join(projectRoot, 'src');
     const www = path.join(projectRoot, 'www');
 
-    common.init(context);
     npm.load({
         prefix: context.opts.plugin.dir,
     }, (err) => {
@@ -20,6 +18,9 @@ module.exports = context => new Promise((resolve, reject) => {
                 if (e) {
                     reject(e);
                 } else {
+                    const common = require('./common'); // eslint-disable-line global-require
+
+                    common.init(context);
                     common.mv(www, src)
                         .then(() => common.ensureDirExists(www))
                         .then(() => {
