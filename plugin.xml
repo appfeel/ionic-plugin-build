@@ -13,6 +13,6 @@
         AppFeel
     </author>
 
-    <hook type="after_plugin_install" src="scripts/afterPluginInstall.js" />
+    <hook type="after_plugin_add" src="scripts/afterPluginAdd.js" />
     <hook type="before_prepare" src="scripts/beforePrepare.js" />
 </plugin>
