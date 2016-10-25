@@ -1,6 +1,6 @@
 # Ionic Build plugin
 
-**NOTE:** It requires that all development is done in `src/` folder, instead of `www/` folder.
+**NOTE:** It requires that all development to be done under `src/` folder, instead of `www/` folder.
 
 This is an Ionic plugin to build source files. It performs the following operations:
 
