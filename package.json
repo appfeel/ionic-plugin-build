@@ -1,0 +1,74 @@
+{
+  "name": "ionic-plugin-build",
+  "version": "1.0.0",
+  "description": "Ionic Build Plugin",
+  "cordova": {
+    "id": "ionic-plugin-build",
+    "platforms": [
+      "ios",
+      "ubuntu",
+      "wp7",
+      "wp8",
+      "windows8",
+      "windows"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/appfeel/ionic-plugin-build"
+  },
+  "keywords": [
+    "cordova",
+    "build",
+    "eslint",
+    "minify",
+    "annotate",
+    "ionic",
+    "angular",
+    "cssnano",
+    "htmlnano",
+    "lint",
+    "htmllint",
+    "csslint",
+    "cordova-ios",
+    "cordova-ubuntu",
+    "cordova-wp7",
+    "cordova-wp8",
+    "cordova-windows8",
+    "cordova-windows"
+  ],
+  "scripts": {
+    "test": "npm run eslint",
+    "eslint": "./node_modules/.bin/eslint scripts"
+  },
+  "author": "AppFeel <info@appfeel.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "cheerio": "^0.22.0",
+    "chokidar": "^1.6.1",
+    "cssnano": "^3.7.7",
+    "del": "^2.2.2",
+    "eslint": "^3.8.1",
+    "eslint-config-angular": "^0.5.0",
+    "eslint-html-reporter": "^0.5.2",
+    "eslint-plugin-angular": "^1.4.1",
+    "glob": "^7.1.1",
+    "html-minifier": "^3.1.0",
+    "htmlhint": "^0.9.13",
+    "mkdirp": "^0.5.1",
+    "mv": "^2.1.1",
+    "ng-annotate": "^1.2.1",
+    "opener": "^1.4.2",
+    "preprocess": "^3.1.0",
+    "templatecache": "^1.0.4",
+    "uglify-js": "^2.7.3",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1"
+  }
+}

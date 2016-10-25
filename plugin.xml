@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="ionic-plugin-build"
+      version="1.0.0">
+
+    <name>Build</name>
+    <description>Ionic Build Plugin</description>
+    <license>MIT</license>
+    <keywords>cordova,build,eslint,minify,annotate,ionic,angular,cssnano,htmlnano,lint,htmllint,csslint,cordova-ios,cordova-ubuntu,cordova-wp7,cordova-wp8,cordova-windows8,cordova-windows</keywords>
+    <repo>https://github.com/appfeel/ionic-plugin-build</repo>
+    <issue>https://github.com/appfeel/ionic-plugin-build/issues</issue>
+    <author email="info@appfeel.com" href="http://appfeel.com/">
+        AppFeel
+    </author>
+
+    <hook type="after_plugin_install" src="scripts/afterPluginInstall.js" />
+    <hook type="before_prepare" src="scripts/beforePrepare.js" />
+</plugin>
