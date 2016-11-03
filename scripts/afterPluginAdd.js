@@ -1,5 +1,7 @@
 /* global logger */
 
+'use strict'; // eslint-disable-line strict, lines-around-directive
+
 const path = require('path');
 
 module.exports = context => new Promise((resolve, reject) => {

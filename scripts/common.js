@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /* global logger */
 
+'use strict'; // eslint-disable-line strict, lines-around-directive
+
 const mpath = require('path');
 const fs = require('fs');
 
