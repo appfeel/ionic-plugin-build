@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* global logger */
 
-'use strict'; // eslint-disable-line strict, lines-around-directive
+"use strict";
 
 const mpath = require('path');
 const fs = require('fs');
@@ -380,14 +380,16 @@ function copyFiles(files, path, dest, opts) {
             }
         }
 
-        if (isProcessFile) {
+        if (isProcessFile && file) {
             let fileParts = file.replace(pathReplace, '').split('/');
             const fileName = fileParts.pop();
             fileParts = fileParts.join('/');
             const origin = mpath.join(path, fileParts, fileName);
             const to = mpath.join(dest, fileParts, fileName);
-            logFileProgress('Copying resource', `from ${origin} to ${to}`);
-            promises.push(copyFile(fileParts, origin, to));
+            if (fs.existsSync(origin)) {
+                logFileProgress('Copying resource', `from ${origin} to ${to}`);
+                promises.push(copyFile(fileParts, origin, to));
+            }
         }
     });
 
