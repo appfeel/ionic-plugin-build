@@ -1,6 +1,6 @@
 {
   "name": "ionic-plugin-build",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Ionic Build Plugin",
   "cordova": {
     "id": "ionic-plugin-build",
