@@ -62,3 +62,11 @@ This options can be used it like this:
 ```bash
 $ cordova prepare browser -p --skip-lint -nf
 ```
+
+## Ionic:
+
+When `cordova serve ...` is executed, this plugin automatically detects it and watch for file changes. The problem with `ionic run browser -l` is that it executes `cordova run browser` untherneath, so no serve can be detected. In this case you can use the `-w` or `-watch` flags:
+
+```
+$ ionic run browser -l -w -nf
+```

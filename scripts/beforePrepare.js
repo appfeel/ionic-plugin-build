@@ -110,7 +110,7 @@ module.exports = (context) => {
     }
 
     // Is called from phonegap serve?
-    if (/\sserve/i.test(context.cmdLine)) {
+    if (/\sserve/i.test(context.cmdLine) || /-w/i.test(context.cmdLine) || /-watch/i.test(context.cmdLine)) {
         fs.writeFileSync(isServingFile, 'true');
         return serve(src, tmp, www)
             .then(() => watch(src, www));
