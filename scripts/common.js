@@ -540,6 +540,7 @@ function processLinks(links, path) {
             .then(code => code.replace(/\.\.\/fonts\/ionicons/g, `${bowerInner}/ionic/fonts/ionicons`))
             .then(code => code.replace(/\.\.\/fonts\/fontawesome/g, `${bowerInner}/components-font-awesome/fonts/fontawesome`))
             .then(code => code.replace(/\.\.\/img\//g, 'img/'))
+            .then(code => code.replace(/\.\.\/fonts\//g, 'fonts/'))
             .then((code) => {
                 if (!options.skipComp) {
                     if (!/(\.min\.css$|\.min\.css\?)/gi.test(link)) {
