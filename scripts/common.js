@@ -469,54 +469,56 @@ function processScripts(scripts, path) {
     let isNoErrors = true;
 
     scripts.forEach((script) => {
-        const promise = readFile(mpath.join(path, script), options.preprocessResources)
-            .then(code => ({
-                messages: lintJs(code, path, script),
-                code,
-            }))
-            .then(d => ({
-                messages: d.messages,
-                code: d.code.replace(/(templateUrl)[\s]*:[\s]*([^\n,]+)/g, 'templateProvider:function($templateCache){return $templateCache.get($2)}'),
-            }))
-            .then((d) => {
-                const code = d.code;
-                logFileProgress('Annotating', mpath.join(path, script));
-                const res = ngAnnotate(code, { add: true });
-                if (res.errors && res.errors.length) {
-                    throw new Error(res.errors.join(','));
-                }
-                return {
+        if (script) {
+            const promise = readFile(mpath.join(path, script), options.preprocessResources)
+                .then(code => ({
+                    messages: lintJs(code, path, script),
+                    code,
+                }))
+                .then(d => ({
                     messages: d.messages,
-                    code: res.src,
-                };
-            })
-            .then((d) => {
-                const messages = d.messages;
-                let code = d.code;
-                if (messages.length > 0) {
-                    allMessages.push({
-                        filePath: mpath.join(path, script),
-                        messages,
-                    });
-                    if (!options.noFailLint) {
-                        isNoErrors = false;
-                        throw new Error('Linting failed');
+                    code: d.code.replace(/(templateUrl)[\s]*:[\s]*([^\n,]+)/g, 'templateProvider:function($templateCache){return $templateCache.get($2)}'),
+                }))
+                .then((d) => {
+                    const code = d.code;
+                    logFileProgress('Annotating', mpath.join(path, script));
+                    const res = ngAnnotate(code, { add: true });
+                    if (res.errors && res.errors.length) {
+                        throw new Error(res.errors.join(','));
                     }
-                }
-                if (!options.skipComp && isNoErrors) {
-                    if (!/\.min\.js$/gi.test(script)) {
-                        logFileProgress('Minifying', script);
-                        const res = uglify.minify(code, uglifyOpts);
-                        code = res.code;
+                    return {
+                        messages: d.messages,
+                        code: res.src,
+                    };
+                })
+                .then((d) => {
+                    const messages = d.messages;
+                    let code = d.code;
+                    if (messages.length > 0) {
+                        allMessages.push({
+                            filePath: mpath.join(path, script),
+                            messages,
+                        });
+                        if (!options.noFailLint) {
+                            isNoErrors = false;
+                            throw new Error('Linting failed');
+                        }
                     }
-                }
-                return `~(function(){\n${code}\n})()`;
-            })
-            .catch((err) => {
-                logFileProgress(err, mpath.join(path, script), 'error');
-            });
+                    if (!options.skipComp && isNoErrors) {
+                        if (!/\.min\.js$/gi.test(script)) {
+                            logFileProgress('Minifying', script);
+                            const res = uglify.minify(code, uglifyOpts);
+                            code = res.code;
+                        }
+                    }
+                    return `~(function(){\n${code}\n})()`;
+                })
+                .catch((err) => {
+                    logFileProgress(err, mpath.join(path, script), 'error');
+                });
 
-        promises.push(promise);
+            promises.push(promise);
+        }
     });
 
     return Promise.all(promises)
