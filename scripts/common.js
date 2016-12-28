@@ -126,7 +126,7 @@ function ensureDirExists(dOut) {
 function prepareOptions(opts) {
     options = opts;
     options.help = options.h || options.help; // Help
-    options.production = options.p || options.prod || options.production; // Production
+    options.production = options.p || options.prod || options.production || options.release; // Production
     options.debug = options.d || options.debug; // DEBUG
     options.angularDebug = options.ad || options['angular-debug']; // ANGULAR_DEBUG
     options.skipLint = options.sl || options['skip-lint']; // Skip lint
