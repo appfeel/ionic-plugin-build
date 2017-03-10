@@ -114,6 +114,8 @@ module.exports = (context) => {
         fs.writeFileSync(isServingFile, 'true');
         return serve(src, tmp, www)
             .then(() => watch(src, www));
+    } else if (/-skip/i.test(context.cmdLine)) {
+        return serve(src, tmp, www);
     } else if (!isServing) {
         return build(src, tmp, www);
     }
