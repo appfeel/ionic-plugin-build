@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="ionic-plugin-build"
-      version="1.0.13">
+      id="ionic-plugin-build"
+      version="1.0.15">
 
     <name>Build</name>
     <description>Ionic Build Plugin</description>
