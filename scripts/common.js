@@ -665,7 +665,7 @@ function init(context) {
     } catch (err) {
         bowerDir = 'bower_components';
     }
-    skipLintRegex = new RegExp(`(${bowerDir}/|node_modules/)`, 'i');
+    skipLintRegex = new RegExp(`(${bowerDir}/|node_modules/|\.min\.js$)`, 'i');
     const bowerParts = bowerDir.split('/');
     while (bowerParts.shift() !== 'src');
     bowerInner = bowerParts.join('/');
